@@ -1,0 +1,82 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Compiled source code
+*.class
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Maven build files
+target/
+!src/main/resources/**
+
+# Gradle build files
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode project files
+.vscode/
+
+# Eclipse project files
+.project
+.classpath
+.settings/
+
+# NetBeans project files
+nbproject/private/
+
+# Sensitive information
+application.yml
+application.properties
+src/main/resources/application-*.yml
+src/main/resources/application-*.properties
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Package-lock (npm dependency lock file)
+package-lock.json
+
+# Node modules (if using frontend in Spring Boot)
+node_modules/
+
+# Test results
+test-output/
