@@ -20,6 +20,7 @@ public class TodoList {
     private ObjectId id;
     private String task;
     private String status;
+    private String priority;
     private LocalDateTime date;
     private List<History>history=new ArrayList<>();
 

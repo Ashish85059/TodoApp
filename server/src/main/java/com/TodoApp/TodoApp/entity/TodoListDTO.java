@@ -12,6 +12,7 @@ public class TodoListDTO {
     private String task;
     private String status;
     private LocalDateTime date;
+    private String priority;
     private List<History> li;
 
 
@@ -21,6 +22,7 @@ public class TodoListDTO {
         this.status = todo.getStatus();
         this.date = todo.getDate();
         this.li=todo.getHistory();
+        this.priority=todo.getPriority();
     }
 
 }

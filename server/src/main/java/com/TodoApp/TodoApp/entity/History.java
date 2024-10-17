@@ -17,6 +17,4 @@ public class History {
     private String newValue;
     private LocalDateTime date;
 
-
-
 }

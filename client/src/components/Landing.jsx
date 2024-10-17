@@ -18,8 +18,8 @@ const Landing = () => {
       <div className="container mx-auto p-4 flex flex-col lg:flex-row justify-between items-center">
         
         <div className="text-center lg:text-left lg:w-1/2 mb-8 lg:mb-0">
-          <h1 className="text-4xl font-bold mb-4">Welcome to the Todo App</h1>
-          <p className="text-lg text-gray-700">Manage your tasks efficiently and stay organized with our simple Todo List application.</p>
+          <h1 className="text-4xl font-bold mb-4">Welcome to the TaskManager App</h1>
+          <p className="text-lg text-gray-700">Manage your tasks efficiently and stay organized with our simple TaskManager application.</p>
         </div>
         
         <div className="lg:w-1/2 flex justify-center lg:justify-end">

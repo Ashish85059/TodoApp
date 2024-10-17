@@ -21,7 +21,6 @@ public class User {
     private String userName;
     @NonNull
     private String password;
-
     @DBRef
     private List<TodoList> tasks=new ArrayList<>();
 }
