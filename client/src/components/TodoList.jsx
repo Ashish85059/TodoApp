@@ -23,6 +23,7 @@ const TodoList = () => {
     try {
       const response = await fetch(`http://localhost:8080/todo/${storedUser}`);
       const data = await response.json(); 
+      console.log(data);
       setTodos(Array.isArray(data) ? data : []); 
     } catch (err) {
       console.error('Error fetching todos:', err);
@@ -136,6 +137,7 @@ const TodoList = () => {
       <table className="min-w-full border-collapse border border-gray-200">
         <thead>
           <tr>
+            <th className="border border-gray-300 p-2">Date Added</th>
             <th className="border border-gray-300 p-2">Task</th>
             <th className="border border-gray-300 p-2">Status</th>
             <th className="border border-gray-300 p-2">Actions</th>
@@ -144,6 +146,9 @@ const TodoList = () => {
         <tbody>
           {filteredTodos.map((todo) => (
             <tr key={todo.id}>
+              <td className="border border-gray-300 p-2"> 
+                {new Date(todo.date).toLocaleDateString()}
+              </td>
               <td className="border border-gray-300 p-2">
                 {editId === todo.id ? (
                   <input

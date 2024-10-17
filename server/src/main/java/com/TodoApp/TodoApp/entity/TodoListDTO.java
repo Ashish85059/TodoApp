@@ -3,6 +3,8 @@ package com.TodoApp.TodoApp.entity;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class TodoListDTO {
@@ -10,6 +12,7 @@ public class TodoListDTO {
     private String task;
     private String status;
     private LocalDateTime date;
+    private List<History> li;
 
 
     public TodoListDTO(TodoList todo) {
@@ -17,6 +20,7 @@ public class TodoListDTO {
         this.task = todo.getTask();
         this.status = todo.getStatus();
         this.date = todo.getDate();
+        this.li=todo.getHistory();
     }
 
 }

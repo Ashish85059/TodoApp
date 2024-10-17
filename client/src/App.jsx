@@ -5,6 +5,8 @@ import Landing from './components/Landing'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import TodoList from './components/TodoList'
+import History from './components/History'
+
 
 const router=createBrowserRouter([
   {
@@ -26,8 +28,11 @@ const router=createBrowserRouter([
     {
       path:"todolist",
       element:<TodoList/>
+    },
+    {
+      path:"history",
+      element:<History/>
     }
-  
   ]
 }
 ])

@@ -1,5 +1,6 @@
 package com.TodoApp.TodoApp.services;
 
+import com.TodoApp.TodoApp.entity.History;
 import com.TodoApp.TodoApp.entity.TodoList;
 import com.TodoApp.TodoApp.entity.User;
 import com.TodoApp.TodoApp.repository.TodoRepository;
@@ -55,14 +56,26 @@ public class TodoService {
     public void updateTodo(ObjectId id, String username, TodoList newTodo) {
         TodoList oldTodo = todoRepository.findById(id).orElse(null);
         User user=userService.findByUserName(username);
+        History obj1=null;
+        History obj2=null;
 //        System.out.println("TAsk-> "+newTodo);
         if (oldTodo != null) {
 
             if (newTodo.getTask() != null && !newTodo.getTask().isEmpty()) {
+                if(!oldTodo.getTask().equals(newTodo.getTask())){
+                    obj1=new History("task",oldTodo.getTask(),newTodo.getTask(),LocalDateTime.now());
+                    System.out.println("obj1-> "+obj1);
+                    oldTodo.getHistory().add(obj1);
+                }
                 oldTodo.setTask(newTodo.getTask());
             }
 
             if (newTodo.getStatus() != null && !newTodo.getStatus().isEmpty()) {
+                if (!oldTodo.getStatus().equals(newTodo.getStatus())){
+                    obj2 = new History("status", oldTodo.getStatus(),newTodo.getStatus(),LocalDateTime.now());
+                    System.out.println("obj2-> "+obj2);
+                    oldTodo.getHistory().add(obj2);
+                }
                 oldTodo.setStatus(newTodo.getStatus());
             }
 //            System.out.println("oldTodo-=>"+oldTodo);
@@ -70,6 +83,12 @@ public class TodoService {
                 if(user.getTasks().get(i).getId().equals(id)){
 //                    System.out.println("Use-> "+oldTodo);
                     user.getTasks().set(i,oldTodo);
+//                    if (obj1 != null) {
+//                        user.getTasks().get(i).getHistory().add(obj1);
+//                    }
+//                    if (obj2 != null) {
+//                        user.getTasks().get(i).getHistory().add(obj2);
+//                    }
                     userService.saveEntry(user);
                     break;
                 }

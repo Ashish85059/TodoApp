@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  const location=useLocation();
   const navigate=useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -23,7 +25,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         
         <div className="text-white text-lg font-semibold">
-          <Link to="/">TodoApp</Link>
+          <Link to="/">Task Manager</Link>
         </div>
 
         <div className="space-x-4">
@@ -43,12 +45,32 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
+            <>
+            {location.pathname==="/todolist"?(
+              <Link
+                  to="/history"
+                  className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded"
+                >
+                  History
+                </Link>
+            )
+              :
+             ( <Link
+                  to="/todolist"
+                  className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded"
+                >
+                  Tasks
+                </Link>
+              
+            )}
             <button
               onClick={handleLogout}
               className="text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded"
             >
               Logout
             </button>
+            </>
+            
           )}
         </div>
       </div>
