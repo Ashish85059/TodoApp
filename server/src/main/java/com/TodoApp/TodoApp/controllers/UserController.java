@@ -37,8 +37,8 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> createMapping(@RequestBody User user){
         try{
-            userService.saveEntry(user);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return userService.saveEntry(user);
+
         } catch (Exception e) {
             return new ResponseEntity<>(e,HttpStatus.INTERNAL_SERVER_ERROR);
         }

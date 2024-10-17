@@ -19,15 +19,17 @@ const Signup = () => {
         },
         body: JSON.stringify({ userName, password }),
       });
-      console.log(response);
+      // console.log(response);
       
 
       if (response.ok) {
-        
-        localStorage.setItem('username', userName);
         toast.success('Signup successful!');
         navigate('/login'); 
-      } else {
+      }
+      else if(response.status==400){
+        toast.error("User already exists");
+      }
+      else {
         
         toast.error('Signup failed, please try again.');
       }
