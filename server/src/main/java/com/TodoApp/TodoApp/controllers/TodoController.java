@@ -27,7 +27,9 @@ public class TodoController {
     @GetMapping("/{userName}")
     public ResponseEntity<List<TodoListDTO>> getList(@PathVariable String userName){
         try {
+
             User data = userService.findByUserName(userName);
+//            System.out.println(data);
             List<TodoListDTO> todoList = new ArrayList<>();
 
             for (TodoList task : data.getTasks()) {
@@ -68,7 +70,7 @@ public class TodoController {
     @PutMapping("/{todoId}/{userName}")
     public  ResponseEntity<?>updateTodo(@PathVariable ObjectId todoId,@PathVariable String userName,@RequestBody TodoList task){
         todoService.updateTodo(todoId,userName,task);
-        System.out.println("task-> "+task);
+//        System.out.println("task-> "+task);
         return new ResponseEntity<>("Task Updated",HttpStatus.OK);
     }
 }

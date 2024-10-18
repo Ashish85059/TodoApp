@@ -2,6 +2,7 @@ package com.TodoApp.TodoApp.controllers;
 
 import com.TodoApp.TodoApp.entity.TodoList;
 import com.TodoApp.TodoApp.entity.User;
+import com.TodoApp.TodoApp.services.PassswordService;
 import com.TodoApp.TodoApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PassswordService passswordService;
+
     @GetMapping
     public ResponseEntity< List<User>> getAllUsers(){
         return new ResponseEntity<>( userService.getAll(), HttpStatus.OK);
@@ -27,7 +31,7 @@ public class UserController {
 //        System.out.println("data-> "+data);
         List<User> users=userService.getAll();
         for(User user:users){
-            if(user.getUserName().equals(data.getUserName()) && user.getPassword().equals(data.getPassword())){
+            if(user.getUserName().equals(data.getUserName()) && passswordService.checkPassword(data.getPassword(),user.getPassword())){
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         }

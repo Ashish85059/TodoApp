@@ -24,12 +24,15 @@ public class TodoService {
     public void saveEntry(TodoList todo, String userName) {
         try {
             User user = userService.findByUserName(userName);
-//            System.out.println("user-> " + user.getUserName());
+
+//            System.out.println("user-> " + user);
             todo.setDate(LocalDateTime.now());
             TodoList savedTodo = todoRepository.save(todo);
             user.getTasks().add(savedTodo);
 //            System.out.println("saved todo -> "+savedTodo);
-            userService.saveEntry(user);
+            userService.updateUser(user);
+//            System.out.println("user-> "+user);
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -64,7 +67,7 @@ public class TodoService {
             if (newTodo.getTask() != null && !newTodo.getTask().isEmpty()) {
                 if(!oldTodo.getTask().equals(newTodo.getTask())){
                     obj1=new History("task",oldTodo.getTask(),newTodo.getTask(),LocalDateTime.now());
-                    System.out.println("obj1-> "+obj1);
+//                    System.out.println("obj1-> "+obj1);
                     oldTodo.getHistory().add(obj1);
                 }
                 oldTodo.setTask(newTodo.getTask());
@@ -73,7 +76,7 @@ public class TodoService {
             if (newTodo.getStatus() != null && !newTodo.getStatus().isEmpty()) {
                 if (!oldTodo.getStatus().equals(newTodo.getStatus())){
                     obj2 = new History("status", oldTodo.getStatus(),newTodo.getStatus(),LocalDateTime.now());
-                    System.out.println("obj2-> "+obj2);
+//                    System.out.println("obj2-> "+obj2);
                     oldTodo.getHistory().add(obj2);
                 }
                 oldTodo.setStatus(newTodo.getStatus());
