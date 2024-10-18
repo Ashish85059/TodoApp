@@ -144,6 +144,7 @@ const TodoList = () => {
           <option value="all">All</option>
           <option value="pending">Pending</option>
           <option value="completed">Completed</option>
+          <option value="In Progress">In Progress</option>
         </select>
         <select
           value={sortBy}
@@ -224,6 +225,7 @@ const TodoList = () => {
                   >
                     <option value="pending">Pending</option>
                     <option value="completed">Completed</option>
+                    <option value="In Progress">In Progress</option>
                   </select>
                 ) : (
                   todo.status
